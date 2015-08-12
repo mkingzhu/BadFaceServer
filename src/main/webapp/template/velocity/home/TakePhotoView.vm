@@ -12,9 +12,9 @@
         var wxConfig = {
             debug: false,
             appId: '$!{appId}',
-            timestamp: $!{timestamp},
-            nonceStr:  '$!{nonceStr}',
-            signature: '$!{signature}',
+            timestamp: $!{wxJsapiSignature.timestamp},
+            nonceStr:  '$!{wxJsapiSignature.noncestr}',
+            signature: '$!{wxJsapiSignature.signature}',
             jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
         };
         wx.config(wxConfig);

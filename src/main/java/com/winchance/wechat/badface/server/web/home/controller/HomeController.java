@@ -29,20 +29,24 @@ public class HomeController {
 
     @RequestMapping(value = "RuleView.htm", method = { RequestMethod.GET })
     public String ruleView(ModelMap modelMap, HttpServletRequest request) {
+        String appId = wechatTokenServiceClient.getAppId();
         WxJsapiSignature wxJsapiSignature = wechatTokenServiceClient.createJsapiSignature(getUrl(request));
+        modelMap.addAttribute("appId", appId);
         modelMap.addAttribute(wxJsapiSignature);
         return "home/RuleView";
     }
 
     @RequestMapping(value = "TakePhotoView.htm", method = { RequestMethod.GET })
     public String takePhotoView(ModelMap modelMap, HttpServletRequest request) {
+        String appId = wechatTokenServiceClient.getAppId();
         WxJsapiSignature wxJsapiSignature = wechatTokenServiceClient.createJsapiSignature(getUrl(request));
+        modelMap.addAttribute("appId", appId);
         modelMap.addAttribute(wxJsapiSignature);
         return "home/TakePhotoView";
     }
 
     private String getUrl(HttpServletRequest request) {
-        StringBuffer url = new StringBuffer("http://ws.winchance870.com");
+        StringBuffer url = new StringBuffer("http://ecrm.so");
         url.append(request.getRequestURI());
         String queryString = request.getQueryString();
         if (!StringUtil.isEmpty(queryString))

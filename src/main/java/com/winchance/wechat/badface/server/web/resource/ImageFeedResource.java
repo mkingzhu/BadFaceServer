@@ -13,6 +13,7 @@ import com.winchance.util.StringUtil;
 import com.winchance.util.convertor.GsonConvertor;
 import com.winchance.web.JsonRepresentation;
 import com.winchance.wechat.badface.server.biz.ImageBiz;
+import com.winchance.wechat.badface.server.biz.config.ImageConfig;
 import com.winchance.wechat.badface.server.model.Image;
 import com.winchance.wechat.badface.server.model.ImagePostResultVo;
 import com.winchance.wechat.badface.server.web.ErrorInfo;
@@ -24,6 +25,8 @@ public class ImageFeedResource extends ServerResource {
     private static final Type respType = new TypeToken<RestModel<ImagePostResultVo>>() {}.getType();
 
     private static final ImageBiz imageBiz = SpringContextUtil.getBean(ImageBiz.class);
+
+    private static final ImageConfig imageConfig = SpringContextUtil.getBean(ImageConfig.class);
 
     @Override
     protected Representation post(Representation representation)
@@ -68,7 +71,7 @@ public class ImageFeedResource extends ServerResource {
 
             // 设置返回信息
             ImagePostResultVo imagePostResultVo = new ImagePostResultVo();
-            imagePostResultVo.setUrl(imageUrl);
+            imagePostResultVo.setUrl(imageConfig.getImageUrlPrefix() + imageUrl);
             entity.setModel(imagePostResultVo);
         } while (false);
 
