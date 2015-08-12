@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                           http://www.springframework.org/schema/context 
+                           http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+  <context:component-scan base-package="com.winchance.wechat.badface.server.web.*" />
+
+  <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+  <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+    <property name="resourceLoaderPath" value="/template/velocity/" />
+    <property name="velocityProperties">
+      <props>
+        <prop key="input.encoding">UTF-8</prop>
+        <prop key="output.encoding">UTF-8</prop>
+        <prop key="contentType">text/html;charset=utf-8</prop>
+        <prop key="parser.pool.size">100</prop>
+      </props>
+    </property>
+  </bean>
+  <bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+    <property name="cache" value="true" />
+    <property name="exposeSessionAttributes" value="false" />
+    <property name="exposeRequestAttributes" value="false" />
+    <property name="requestContextAttribute" value="rc" />
+    <property name="suffix" value=".vm" />
+    <property name="exposeSpringMacroHelpers" value="true" />
+    <property name="toolboxConfigLocation" value="/WEB-INF/velocity/toolbox.xml" />
+    <property name="viewClass" value="org.springframework.web.servlet.view.velocity.VelocityToolboxView" />
+    <property name="contentType" value="text/html;charset=utf-8" />
+  </bean> 
+</beans>

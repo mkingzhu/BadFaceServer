@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winchance.wechat.badface.server.dao.ImageDao">
+  <insert id="save" parameterType="com.winchance.wechat.badface.server.dao.dataobject.ImageDo">
+    insert into image(
+        user_id, refer_time, url 
+    )values(
+        #{userId}, #{referTime}, #{url}
+    )
+    <selectKey resultType="java.lang.Long">
+      <![CDATA[
+        SELECT @@IDENTITY AS id
+      ]]>
+    </selectKey>
+  </insert>
+</mapper>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  
+                           http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
+                           http://cxf.apache.org/jaxws  
+                           http://cxf.apache.org/schemas/jaxws.xsd">
+
+
+  <jaxws:client id="wechatTokenService" serviceClass="com.mkingzhu.wechat.center.server.webservice.facade.WechatTokenService" address="http://121.41.84.236:8888/center-server/ws/WechatTokenService" />
+  <bean id="wechatTokenServiceClient" class="com.winchance.wechat.badface.server.interation.impl.WechatTokenServiceClientImpl" />
+</beans>
+ 

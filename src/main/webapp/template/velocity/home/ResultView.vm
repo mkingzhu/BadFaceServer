@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, target-densityDpi=device-dpi, user-scalable=yes">
+        <title>你结婚之后靠什么吃饭</title>
+        <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <link rel="stylesheet" href="css/ResultView.css"/>
+        <script>
+            var wxConfig = {
+                debug: false,
+                appId: '$!{appId}',
+                timestamp: $!{wxJsapiSignature.timestamp},
+                nonceStr:  '$!{wxJsapiSignature.noncestr}',
+                signature: '$!{wxJsapiSignature.signature}',
+                jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
+            };
+        </script>
+    </head>
+    <body>
+    <img id="avatar-image"/>
+    <img id="background-image"/>
+    <input type="image" id="share_button" class="result_view_button" src="img/share_button.png"/>
+    <input type="image" id="start_button" class="result_view_button" src="img/start_test_button.png"/>
+    <input type="image" id="rule_button" class="result_view_button" src="img/rule_button.png"/>
+    <div id="share_leading_mask">
+        <img src="img/shareLeading.png" id="share_leading_view" style="display:none;"/>
+    </div>
+    </body>
+    <script src="js/cookie.js"></script>
+    <script src="js/ResultView.js"></script>
+</html>

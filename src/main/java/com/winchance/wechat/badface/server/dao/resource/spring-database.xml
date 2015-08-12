@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+                           http://www.springframework.org/schema/context 
+                           http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+  <context:annotation-config />
+
+  <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="locations">
+      <list>
+        <value>file:/home/tomcatconfig/badface/db.properties</value>
+        <value>file:/home/tomcatconfig/badface/interation.properties</value>
+      </list>
+    </property>
+  </bean>
+
+  <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+    <property name="driverClassName">
+      <value>${db.mysql.driver}</value>
+    </property>
+    <property name="url">
+      <value>${db.url.prod}</value>
+    </property>
+    <property name="username">
+      <value>${db.username}</value>
+    </property>
+    <property name="password">
+      <value>${db.password}</value>
+    </property>
+    <property name="defaultAutoCommit">
+      <value>${db.defaultAutoCommit}</value>
+    </property>
+    <!-- 同时连接最大数 -->
+    <property name="maxActive">
+      <value>${db.maxActive}</value>
+    </property>
+    <!-- 连接池空闲时保持的最大连接数 -->
+    <property name="maxIdle">
+      <value>${db.maxIdle}</value>
+    </property>
+    <!-- 当没有可用连接是等待最长时间 毫秒 -->
+    <property name="maxWait">
+      <value>${db.maxWait}</value>
+    </property>
+  </bean>
+
+  <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <property name="dataSource" ref="dataSource" />
+    <property name="configLocation" value="classpath:com/winchance/wechat/badface/server/dao/sqlmap/sqlmap.xml" />
+    <property name="mapperLocations" value="classpath:com/winchance/wechat/badface/server/dao/sqlmap/mapping/*-mapping.xml" />
+  </bean>
+  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <property name="basePackage" value="com.winchance.wechat.badface.server.dao" />
+    <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+  </bean>
+  <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="dataSource" />
+  </bean>
+</beans>
