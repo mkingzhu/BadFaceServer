@@ -6,7 +6,7 @@
     <script src="js/binaryajax.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, target-densityDpi=device-dpi, user-scalable=yes">
-    <title>你结婚之后靠什么吃饭</title>
+    <title>征服男神</title>
     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script>
         var wxConfig = {
@@ -20,9 +20,9 @@
         wx.config(wxConfig);
         wx.ready(function () {
             var cfg = {
-                title: '测一测你结婚后靠啥吃饭！据说颜值越高越有机会赢百雀羚500元免单？！',
-                link: 'http:///ws.winchance870.com/goodface/TakePhotoView.htm',
-                imgUrl: 'http://ws.winchance870.com/goodface/img/defaultAvatarImage.png'
+                title: '测测恋爱时你靠什么征服他？',
+                link: 'http://ecrm.so/badface/TakePhotoView.htm',
+                imgUrl: 'http://ecrm.so/badface/img/defaultAvatarImage.png'
             };
             wx.onMenuShareTimeline(cfg);
             wx.onMenuShareAppMessage(cfg);
